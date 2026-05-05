@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { SectionHeader } from "@/components/Buttons";
+import { ButtonLink, SectionHeader } from "@/components/Buttons";
 import {
   FinalCta,
   ImpactSection,
-  PageHero,
   ServicesGrid,
   StatementBand,
 } from "@/components/Sections";
+import { ScrollMorphSection } from "@/components/ScrollMorphSection";
 import { homeSeo } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -18,16 +18,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <PageHero
-        title="Empowering People. Strengthening Practice. Transforming Lives."
-        subtitle="Thrive is a specialist platform for individuals, professionals, faith communities, and organisations who are serious about safeguarding, growth, and lasting change."
-        intro="We sit at the intersection of lived experience, professional practice, and research. What that means for you is simple: every service we deliver is grounded in what actually works."
-        image="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1600&q=80"
-        ctas={[
-          { label: "Explore Our Services", href: "/what-we-do" },
-          { label: "Get in Touch", href: "/contact" },
-        ]}
-      />
+      <HomeHero />
+      <HomeHeroSupport />
 
       <StatementBand />
 
@@ -52,10 +44,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[var(--soft)] py-20">
+      <ScrollMorphSection
+        eyebrow="Why Thrive"
+        title="Support that moves with the people who need it."
+        body={[
+          "Thrive brings together lived experience, professional practice, safeguarding insight, and culturally responsive support.",
+          "Whether we are working with an individual, a church, a professional team, or an organisation, the goal is the same: safer spaces, clearer decisions, and the confidence to move forward.",
+        ]}
+        image="/home/support-in-practice.jpg"
+        imageAlt="Professionals in a facilitated training discussion"
+        cta={{ label: "Explore Our Services", href: "/what-we-do" }}
+      />
+
+      <section className="bg-[var(--soft)] py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeader title="Our Services" />
+          <div className="mb-12">
+            <SectionHeader
+              title="Our Services"
+              intro="Six connected areas of work, arranged around the real support people and organisations need."
+              align="center"
+            />
           </div>
           <ServicesGrid compact />
         </div>
@@ -94,5 +102,79 @@ export default function Home() {
       <ImpactSection />
       <FinalCta />
     </>
+  );
+}
+
+function HomeHero() {
+  return (
+    <section className="relative overflow-hidden bg-[var(--ink)] text-white">
+      <div className="mx-auto grid min-h-[72svh] max-w-7xl items-center gap-10 px-5 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-20">
+        <div className="relative z-10">
+          <span className="hero-accent-line" aria-hidden="true" />
+          <h1 className="text-balance font-serif text-[clamp(2.6rem,7vw,5.6rem)] font-semibold leading-[0.94] text-white">
+            Empowering People. Strengthening Practice. Transforming Lives.
+          </h1>
+        </div>
+        <div className="relative min-h-[22rem] overflow-hidden rounded-lg lg:min-h-[34rem]">
+          <Image
+            src="/home/support-in-practice.jpg"
+            alt="Professional support and development conversation"
+            fill
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/55 via-transparent to-transparent" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeHeroSupport() {
+  const principles = [
+    "Lived experience",
+    "Professional practice",
+    "Research-led insight",
+  ];
+
+  return (
+    <section className="border-b border-black/10 bg-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[1fr_0.85fr] lg:px-8 lg:py-14">
+        <div>
+          <p className="text-2xl font-semibold leading-9 text-[var(--ink)] md:text-3xl md:leading-10">
+            Thrive is a specialist platform for individuals, professionals, faith
+            communities, and organisations who are serious about safeguarding,
+            growth, and lasting change.
+          </p>
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--muted)]">
+            We sit at the intersection of lived experience, professional
+            practice, and research. Every service we deliver is grounded in what
+            actually works.
+          </p>
+        </div>
+        <div className="flex flex-col justify-between gap-8">
+          <div className="grid gap-3">
+            {principles.map((principle, index) => (
+              <div
+                key={principle}
+                className="flex items-center gap-4 border-t border-black/10 pt-4 first:border-t-0 first:pt-0"
+              >
+                <span className="text-sm font-black text-[var(--violet)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="font-bold text-[var(--ink)]">{principle}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <ButtonLink href="/what-we-do">Explore Our Services</ButtonLink>
+            <ButtonLink href="/contact" variant="secondary">
+              Get in Touch
+            </ButtonLink>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

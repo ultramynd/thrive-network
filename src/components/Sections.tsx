@@ -69,7 +69,7 @@ export function PageHero({
 
 export function ServicesGrid({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="services-structured-grid reveal">
       {services.map((service) => {
         const Icon = service.icon;
         const serviceNumber = String(services.indexOf(service) + 1).padStart(2, "0");
@@ -77,31 +77,30 @@ export function ServicesGrid({ compact = false }: { compact?: boolean }) {
           <Link
             key={service.slug}
             href={`/${service.slug}`}
-            className="reveal group rounded-lg border border-black/10 bg-white p-6 transition hover:-translate-y-1 hover:border-[var(--violet)] hover:shadow-xl"
+            className="service-value-card group"
           >
+            <span className="service-value-number">{serviceNumber}</span>
             <div className="flex items-start justify-between gap-4">
-              <span className="grid h-12 w-12 place-items-center rounded-lg bg-[var(--lavender)] text-[var(--violet)]">
-                <Icon aria-hidden="true" size={23} />
-              </span>
-              <span className="text-sm font-black text-[var(--violet)]">
-                {serviceNumber}
+              <span className="service-value-icon">
+                <Icon aria-hidden="true" size={26} strokeWidth={2.1} />
               </span>
               <ArrowUpRight
                 aria-hidden="true"
-                className="text-[var(--muted)] transition group-hover:text-[var(--violet)]"
-                size={21}
+                className="relative z-10 text-[var(--muted)] transition group-hover:text-[var(--violet)]"
+                size={22}
               />
             </div>
-            <h3 className="mt-6 text-xl font-bold leading-7 text-[var(--ink)]">
+            <h3 className="relative z-10 mt-8 max-w-[14rem] text-xl font-bold leading-7 text-[var(--ink)]">
               {service.navTitle}
             </h3>
             <p
-              className={`mt-3 text-sm leading-7 text-[var(--muted)] ${
+              className={`relative z-10 mt-4 text-sm leading-7 text-[var(--muted)] ${
                 compact ? "line-clamp-4" : ""
               }`}
             >
               {service.summary}
             </p>
+            <span className="service-value-line" aria-hidden="true" />
           </Link>
         );
       })}
@@ -202,31 +201,49 @@ export function FinalCta({
 
 export function ImpactSection() {
   return (
-    <section className="bg-[var(--ink)] py-20 text-white">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <h2 className="max-w-3xl font-serif text-4xl font-semibold leading-tight md:text-5xl">
-          Our Impact
-        </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {impactPoints.map((point) => {
-            const Icon = point.icon;
-            return (
-              <div
-                key={point.title}
-                className="reveal rounded-lg border border-white/12 bg-white/[0.04] p-6"
-              >
-                <Icon aria-hidden="true" className="text-[var(--gold)]" />
-                <h3 className="mt-6 text-xl font-bold">{point.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/68">
-                  {point.text}
-                </p>
-              </div>
-            );
-          })}
+    <section className="bg-[var(--ink)] text-white">
+      <div className="mx-auto grid max-w-7xl items-stretch lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="relative min-h-[360px] overflow-hidden lg:min-h-[680px]">
+          <Image
+            src="/home/impact-session.jpg"
+            alt="Professionals reviewing progress in a facilitated session"
+            fill
+            sizes="(min-width: 1024px) 48vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[var(--violet)]/30 mix-blend-multiply" />
         </div>
-        <p className="mt-10 text-xl font-semibold text-white">
-          That is the Thrive standard.
-        </p>
+        <div className="px-5 py-20 lg:px-14">
+          <h2 className="max-w-3xl font-serif text-4xl font-semibold leading-tight md:text-5xl">
+            Our Impact
+          </h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+            {impactPoints.map((point) => {
+              const Icon = point.icon;
+              return (
+                <div
+                  key={point.title}
+                  className="reveal border-t border-white/12 py-6 first:border-t-0 first:pt-0"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-white/10 text-[var(--gold)]">
+                      <Icon aria-hidden="true" size={22} />
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-bold">{point.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-white/68">
+                        {point.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-10 text-xl font-semibold text-white">
+            That is the Thrive standard.
+          </p>
+        </div>
       </div>
     </section>
   );

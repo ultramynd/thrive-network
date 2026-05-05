@@ -160,6 +160,110 @@ html {
     linear-gradient(100deg, var(--violet), var(--violet-dark));
 }
 
+.services-structured-grid {
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  border-left: 1px solid rgb(0 0 0 / 0.1);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-value-card {
+  background: white;
+  border-right: 1px solid rgb(0 0 0 / 0.1);
+  border-top: 1px solid rgb(0 0 0 / 0.1);
+  color: inherit;
+  min-height: 21rem;
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.35rem);
+  position: relative;
+  text-decoration: none;
+  transition:
+    box-shadow 260ms ease,
+    transform 260ms ease;
+}
+
+.service-value-card::before {
+  background: var(--violet);
+  content: "";
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease;
+  width: 100%;
+}
+
+.service-value-card:hover {
+  box-shadow: 0 24px 60px rgb(5 3 10 / 0.12);
+  transform: translateY(-4px);
+  z-index: 2;
+}
+
+.service-value-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-value-number {
+  color: var(--violet);
+  font-size: clamp(3.2rem, 7vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.07;
+  position: absolute;
+  right: 1.35rem;
+  top: 1.15rem;
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
+}
+
+.service-value-card:hover .service-value-number {
+  opacity: 0.13;
+  transform: scale(1.08);
+}
+
+.service-value-icon {
+  align-items: center;
+  background: var(--lavender);
+  color: var(--violet);
+  display: inline-flex;
+  height: 4rem;
+  justify-content: center;
+  position: relative;
+  transition:
+    background-color 260ms ease,
+    color 260ms ease,
+    transform 260ms ease;
+  width: 4rem;
+  z-index: 1;
+}
+
+.service-value-card:hover .service-value-icon {
+  background: var(--violet);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.service-value-line {
+  background: var(--violet);
+  bottom: 2rem;
+  height: 2px;
+  left: clamp(1.5rem, 3vw, 2.35rem);
+  opacity: 0.28;
+  position: absolute;
+  transition:
+    opacity 260ms ease,
+    width 260ms ease;
+  width: 2.5rem;
+}
+
+.service-value-card:hover .service-value-line {
+  opacity: 1;
+  width: 4rem;
+}
+
 .morph-section {
   height: 190svh;
   position: relative;
@@ -385,6 +489,10 @@ html {
 }
 
 @media (max-width: 1023px) {
+  .services-structured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .morph-section {
     height: auto;
   }
@@ -395,5 +503,15 @@ html {
 
   .morph-mobile {
     display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-structured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-value-card {
+    min-height: 19rem;
   }
 }

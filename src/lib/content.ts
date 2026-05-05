@@ -4,9 +4,9 @@ import {
   HeartHandshake,
   Landmark,
   LucideIcon,
+  Microscope,
   PenTool,
   ShieldCheck,
-  Sparkles,
   UsersRound,
 } from "lucide-react";
 
@@ -398,7 +398,7 @@ export const services: Service[] = [
     },
     summary:
       "Customised training programmes and research-informed solutions designed around what your organisation actually needs — not a generic off-the-shelf package.",
-    icon: Sparkles,
+    icon: Microscope,
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80",
     sections: [

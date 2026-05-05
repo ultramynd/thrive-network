@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronDown,
@@ -8,7 +9,6 @@ import {
   MapPin,
   Menu,
   Phone,
-  ShieldCheck,
   X,
 } from "lucide-react";
 import { services, site } from "@/lib/content";
@@ -172,16 +172,16 @@ export function Header() {
 
 function BrandMark({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-3">
-      <span className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--violet)] text-white">
-        <ShieldCheck aria-hidden="true" size={22} />
-      </span>
-      <span
-        className={`text-base font-bold uppercase tracking-[0.18em] ${
-          light ? "text-white" : "text-[var(--ink)]"
-        }`}
-      >
-        Thrive
+    <Link href="/" className="flex items-center">
+      <span className={light ? "rounded-lg bg-white px-3 py-2" : ""}>
+        <Image
+          src="/brand/thrive-network-logo.png"
+          alt="Thrive Network"
+          width={117}
+          height={72}
+          priority
+          className="h-12 w-auto"
+        />
       </span>
     </Link>
   );
@@ -208,13 +208,14 @@ export function Footer() {
     <footer className="bg-[var(--ink)] text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-lg bg-white text-[var(--violet)]">
-              <ShieldCheck aria-hidden="true" size={22} />
-            </span>
-            <span className="text-base font-bold uppercase tracking-[0.18em]">
-              Thrive Network
-            </span>
+          <div className="inline-flex rounded-lg bg-white px-3 py-2">
+            <Image
+              src="/brand/thrive-network-logo.png"
+              alt="Thrive Network"
+              width={117}
+              height={72}
+              className="h-14 w-auto"
+            />
           </div>
           <p className="mt-6 max-w-md text-sm leading-7 text-white/72">
             Empowering people, strengthening practice, and transforming lives
