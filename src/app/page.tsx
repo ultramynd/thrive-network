@@ -1,65 +1,98 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { SectionHeader } from "@/components/Buttons";
+import {
+  FinalCta,
+  ImpactSection,
+  PageHero,
+  ServicesGrid,
+  StatementBand,
+} from "@/components/Sections";
+import { homeSeo } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: homeSeo.title,
+  description: homeSeo.description,
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <PageHero
+        title="Empowering People. Strengthening Practice. Transforming Lives."
+        subtitle="Thrive is a specialist platform for individuals, professionals, faith communities, and organisations who are serious about safeguarding, growth, and lasting change."
+        intro="We sit at the intersection of lived experience, professional practice, and research. What that means for you is simple: every service we deliver is grounded in what actually works."
+        image="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1600&q=80"
+        ctas={[
+          { label: "Explore Our Services", href: "/what-we-do" },
+          { label: "Get in Touch", href: "/contact" },
+        ]}
+      />
+
+      <StatementBand />
+
+      <section className="bg-white py-20">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <SectionHeader title="About Thrive" />
+          <div className="space-y-6 text-lg leading-9 text-[var(--muted)]">
+            <p>
+              At Thrive, we believe that real impact happens when people are
+              genuinely supported, professionals are properly equipped, and
+              organisations are built to be stronger. That is not a tagline. It
+              is the standard we hold ourselves to across everything we do.
+            </p>
+            <p>
+              Our work spans six core areas — Men Empowerment, Safeguarding
+              Training, Leadership Development, Mentoring and Coaching, Bespoke
+              Training and Research, and Thrive Creatives. Each one exists
+              because there is a gap worth closing, a need worth meeting, and a
+              person or organisation worth equipping.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="bg-[var(--soft)] py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeader title="Our Services" />
+          </div>
+          <ServicesGrid compact />
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[1fr_0.9fr] lg:px-8">
+          <div>
+            <SectionHeader title="Why Work With Thrive" />
+            <div className="mt-7 space-y-6 text-lg leading-9 text-[var(--muted)]">
+              <p>
+                There is no shortage of training providers or coaching services.
+                What is rare is genuine expertise, delivered with cultural
+                awareness, grounded in real-world practice, and tailored to the
+                people in the room. That is what Thrive brings.
+              </p>
+              <p>
+                Whether we are working with a church safeguarding lead, a senior
+                manager navigating a complex team, or an individual looking for
+                direction — the commitment is the same. To help you move forward
+                with knowledge, confidence, and clarity.
+              </p>
+            </div>
+          </div>
+          <Image
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80"
+            alt="Professionals in a reflective training conversation"
+            width={900}
+            height={1125}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            className="aspect-[4/5] w-full rounded-xl object-cover shadow-2xl"
+          />
+        </div>
+      </section>
+
+      <ImpactSection />
+      <FinalCta />
+    </>
   );
 }
