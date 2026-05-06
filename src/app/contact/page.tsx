@@ -25,7 +25,18 @@ export default function ContactPage() {
               Contact details
             </h2>
             <div className="mt-7 space-y-4 text-base leading-8 text-[var(--muted)]">
-              <p>Email: {site.email}</p>
+              <div>
+                <p>Email:</p>
+                <ul className="mt-1 space-y-1">
+                  {site.emails.map((email) => (
+                    <li key={email}>
+                      <a className="hover:text-[var(--violet)]" href={`mailto:${email}`}>
+                        {email}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <p>Phone: {site.phone}</p>
               <p>Address: {site.address}</p>
             </div>

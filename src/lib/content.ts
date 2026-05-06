@@ -76,8 +76,10 @@ export const site = {
   name: "Thrive Network",
   url: "https://thrive-network.org",
   email: "hello@thrive-network.org",
+  emails: ["hello@thrive-network.org", "thrivenetwork22@gmail.com"],
   phone: "UK contact number pending",
-  address: "Registered UK company address pending",
+  address:
+    "71-75 Shelton Street, Covent Garden, London, United Kingdom, WC2H 9JQ",
 };
 
 export const homeSeo: Seo = {
@@ -507,7 +509,7 @@ export const whatWeDoSeo: Seo = {
 export const teamMembers: TeamMember[] = [
   {
     slug: "oyeyinka-olaniran",
-    name: "Yinka Oyeyinka Olaniran",
+    name: "Oyeyinka Moses Olaniran",
     role: "Founder",
     division: "Men's Empowerment Division",
     divisionSlug: "mens-empowerment",
@@ -515,7 +517,7 @@ export const teamMembers: TeamMember[] = [
     summary:
       "Founder of Thrive Network and specialist advocate for male victims and survivors of domestic abuse.",
     bio: [
-      "Yinka Oyeyinka Olaniran, the founder of Thrive Network, has dedicated his career to supporting male victims of domestic abuse.",
+      "Oyeyinka Moses Olaniran, the founder of Thrive Network, has dedicated his career to supporting male victims of domestic abuse.",
       "With extensive experience in social services, Yinka recognised the critical need for specialised support for men and established Thrive Network as a safe haven.",
       "Under his leadership, Thrive Network has grown into a trusted organisation focused on creating compassionate, inclusive environments where men can heal and thrive.",
     ],
